@@ -1,0 +1,39 @@
+$palette: (
+  'green': (
+    1: '#006666',
+    2: '#3AB8BC',
+    3: '#E6F0F0'
+  ),
+  'white': (
+    1: '#FFFFFF'
+  ),
+  'black': (
+    1: '#000000'
+  ),
+  'grey': (
+    1: '#FCFBFB',
+    2: '#BDBDBD',
+    3: '#828282',
+    4: '#333333',
+    5: '#979797'
+  ),
+  'red': (
+    1: '#D22D25'
+  ),
+  'blue': (
+    1: '#00EAD9'
+  )
+);
+
+@function get-color($name, $variant: 1, $opacity: 1) {
+  $color: null;
+  $color-spectrum: map-get($palette, $name);
+  @if $color-spectrum {
+    $color: map-get($color-spectrum, $variant);
+  }
+  $alpha: if(type-of($opacity) == 'number', $opacity, map-get($opacity, $opacity));
+  @if $alpha {
+    $color: rgba($color, $alpha);
+  }
+  @return $color;
+}
