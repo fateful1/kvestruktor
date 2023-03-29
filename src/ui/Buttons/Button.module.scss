@@ -83,3 +83,27 @@
     cursor: auto;
   }
 }
+
+.clamping {
+  & path {
+    stroke: black;
+    fill: white;
+    stroke-width: 2px;
+  }
+
+  &:not(.disabled):hover {
+    transition: box-shadow .2s;
+    path {
+      fill: get-color('green', 1);
+    }
+  }
+
+  &:not(.disabled):active {
+    box-shadow: 0 0 4px get-color('grey', 2);
+    path {
+      stroke: get-color('green', 2);
+      fill: get-color('green', 2);
+    }
+    transition: box-shadow .2s;
+  }
+}

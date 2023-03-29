@@ -8,6 +8,7 @@ interface IButtonIconProps {
     icon: React.ReactNode
     type?: 'submit'
     disabled?: boolean
+    isClamping?: boolean
     onClick?: (e: React.MouseEventHandler<HTMLButtonElement>) => void
 }
 
@@ -17,6 +18,7 @@ const ButtonIcon = (props: IButtonIconProps) => {
         onClick,
         icon,
         type,
+        isClamping,
         disabled = false,
     } = props
 
@@ -26,6 +28,7 @@ const ButtonIcon = (props: IButtonIconProps) => {
                 styles.rootButton,
                 styles.rootButtonIcon,
                 className,
+                { [styles.clamping]: isClamping },
                 { [styles.disabled]: disabled }
             )}
             type={type}

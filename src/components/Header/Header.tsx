@@ -8,8 +8,8 @@ const Header = () => {
         <div className={styles.header}>
             <div className={styles.header__left_panel}>
                 <div className={styles.header__icons}>
-                    <ButtonIcon icon={<CursorIcon/>} className={styles.header__cursor}/>
-                    <ButtonIcon icon={<HandIcon/>}/>
+                    <ButtonIcon icon={<CursorIcon/>} isClamping={true} className={styles.header__cursor}/>
+                    <ButtonIcon icon={<HandIcon/>} isClamping={true} className={styles.header__cursor}/>
                 </div>
                 <div className={styles.header__icons}>
                     <ButtonIcon icon={<UndoIcon/>}/>

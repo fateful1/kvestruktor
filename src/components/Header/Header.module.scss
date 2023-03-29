@@ -21,7 +21,7 @@
     &:not(.disabled):active {
       path {
         stroke: get-color('green', 2);
-        fill: get-color('green', 2);
+        fill: get-color('green', 2) !important;
       }
     }
   }
@@ -81,10 +81,11 @@
   &__title {
     font-weight: 500;
     font-size: 18px;
-    color: get-color('grey', 6)
+    color: get-color('grey', 6);
+    text-transform: uppercase;
   }
 
   &__subtitle {
-    color: get-color('grey', 6)
+    color: get-color('grey', 6);
   }
 }
