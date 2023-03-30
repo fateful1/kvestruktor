@@ -1,0 +1,13 @@
+@import 'src/assets/styles/colors';
+
+.menu {
+  width: 400px;
+  height: calc(100vh - 90px);
+  border-right: 2px solid get-color('grey', 7);
+
+  &__tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+  }
+}

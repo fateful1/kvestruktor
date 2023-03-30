@@ -1,0 +1,64 @@
+@import "src/assets/styles/colors";
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  padding: 24px 16px;
+  background-color: get-color('green', 3);
+  position: relative;
+
+  &:not(.disabled):hover {
+    background-color: get-color('green', 2);
+    color: get-color('white', 1);
+    cursor: pointer;
+
+    & path {
+      fill: get-color('white', 1);
+    }
+  }
+
+  &:not(.disabled):active {
+    background-color: get-color('green', 1);
+    color: get-color('white', 1);
+    cursor: pointer;
+
+    & path {
+      fill: get-color('white', 1);
+    }
+
+    &::after {
+      content: '';
+      height: 10px;
+      width: 35px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, 0%);
+      background-image: url("data:image/svg+xml,%0A%3Csvg width='36' height='10' viewBox='0 0 36 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.0002 0L35.3207 10H0.679688L18.0002 0Z' fill='white'/%3E%3C/svg%3E");
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    background-color: get-color('grey', 1);
+    color: get-color('grey', 2);
+
+    & path {
+      fill: get-color('grey', 2);
+    }
+  }
+}

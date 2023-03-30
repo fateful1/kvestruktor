@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import {Header} from "@/components/Header";
+import {LeftMenu} from "@/components/LeftMenu";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       </Head>
       <main>
           <Header/>
+          <LeftMenu/>
       </main>
     </>
   )
