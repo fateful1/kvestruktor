@@ -3,7 +3,7 @@ import styles from './Header.module.scss'
 import {CursorIcon, HandIcon, RedoIcon, UndoIcon, VisibleIcon} from "@/ui/icons";
 import {Button, ButtonIcon} from "@/ui/Buttons";
 const Header = () => {
-    const dragClickOptions = ['click', 'drag']
+    // const dragClickOptions = ['click', 'drag']
     return (
         <div className={styles.header}>
             <div className={styles.header__left_panel}>
