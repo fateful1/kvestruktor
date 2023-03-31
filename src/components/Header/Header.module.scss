@@ -14,7 +14,7 @@
     &:not(.disabled):hover {
       path {
         stroke: get-color('green', 1);
-        fill: currentColor !important;
+        //fill: currentColor !important;
       }
     }
 

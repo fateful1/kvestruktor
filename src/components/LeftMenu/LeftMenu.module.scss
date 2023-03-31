@@ -4,6 +4,7 @@
   width: 400px;
   height: calc(100vh - 90px);
   border-right: 2px solid get-color('grey', 7);
+  position: absolute;
 
   &__tabs {
     display: grid;

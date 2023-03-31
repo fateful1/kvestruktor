@@ -1,15 +1,22 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styles from './Header.module.scss'
 import {CursorIcon, HandIcon, RedoIcon, UndoIcon, VisibleIcon} from "@/ui/icons";
 import {Button, ButtonIcon} from "@/ui/Buttons";
+import {useDispatch} from "react-redux";
+import {setActiveHand} from "@/features/handsSlice";
 const Header = () => {
-    // const dragClickOptions = ['click', 'drag']
+    const [mode, setMode] = useState<number>(0)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        // @ts-ignore
+        dispatch(setActiveHand(mode))
+    },[mode])
     return (
         <div className={styles.header}>
             <div className={styles.header__left_panel}>
                 <div className={styles.header__icons}>
-                    <ButtonIcon icon={<CursorIcon/>} isClamping={true} className={styles.header__cursor}/>
-                    <ButtonIcon icon={<HandIcon/>} isClamping={true} className={styles.header__cursor}/>
+                    <ButtonIcon icon={<CursorIcon/>} isClamping={true} className={styles.header__cursor} onClick={()=>setMode(0)} isActive={mode === 0}/>
+                    <ButtonIcon icon={<HandIcon/>} isClamping={true} className={styles.header__cursor} onClick={()=>setMode(1)} isActive={mode === 1}/>
                 </div>
                 <div className={styles.header__icons}>
                     <ButtonIcon icon={<UndoIcon/>}/>

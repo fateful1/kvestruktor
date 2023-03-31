@@ -9,6 +9,7 @@ interface IButtonIconProps {
     disabled?: boolean
     isClamping?: boolean
     onClick?: (e: React.MouseEventHandler<HTMLButtonElement>) => void
+    isActive?: boolean
 }
 
 const ButtonIcon = (props: IButtonIconProps) => {
@@ -19,6 +20,7 @@ const ButtonIcon = (props: IButtonIconProps) => {
         type,
         isClamping,
         disabled = false,
+        isActive
     } = props
 
     return (
@@ -28,6 +30,7 @@ const ButtonIcon = (props: IButtonIconProps) => {
                 styles.rootButtonIcon,
                 className,
                 { [styles.clamping]: isClamping },
+                { [styles.rootButton__active]: isActive },
                 { [styles.disabled]: disabled }
             )}
             type={type}

@@ -8,6 +8,7 @@
   padding: 24px 16px;
   background-color: get-color('green', 3);
   position: relative;
+  transition: all 0.2s;
 
   &:not(.disabled):hover {
     background-color: get-color('green', 2);
@@ -16,10 +17,12 @@
 
     & path {
       fill: get-color('white', 1);
+      transition: fill 0.2s;
     }
   }
 
-  &:not(.disabled):active {
+  //&:not(.disabled):active,
+  &__active {
     background-color: get-color('green', 1);
     color: get-color('white', 1);
     cursor: pointer;
