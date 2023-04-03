@@ -1,14 +1,44 @@
 @import 'src/assets/styles/colors';
 
 .menu {
-  width: 400px;
+  width: 399px;
   height: calc(100vh - 90px);
   border-right: 2px solid get-color('grey', 7);
-  position: absolute;
+  //position: absolute;
 
   &__tabs {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-between;
+
+    &_contents {
+
+    }
+  }
+
+  &__tab {
+    &_content {
+      display: none;
+    }
+
+    &_active {
+      display: block;
+    }
+  }
+
+  &__backgrounds {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px;
+  }
+
+  &__bg {
+    width: 336px;
+    height: 190px;
+
+    & svg {
+      border-radius: 15px;
+    }
   }
 }

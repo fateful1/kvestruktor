@@ -1,0 +1,1 @@
+export { default as MainStage } from './MainStage'
