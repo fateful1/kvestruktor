@@ -23,6 +23,8 @@
 
     &_active {
       display: block;
+      overflow: auto;
+      height: calc(100vh - 186px);
     }
   }
 
@@ -36,8 +38,9 @@
   &__bg {
     width: 336px;
     height: 190px;
+    cursor: pointer;
 
-    & svg {
+    & img {
       border-radius: 15px;
     }
   }

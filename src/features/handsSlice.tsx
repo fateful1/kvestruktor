@@ -18,5 +18,5 @@ export const setActiveHand = (tab: number) => (dispatch: Dispatch<Action>) => {
 }
 
 export const { setHandInfo } = HandsSlice.actions
-export const showActiveTab = (state: { handsData: { hand: number; }; }) => state.handsData.hand
+export const showHandInfo = (state: { handsData: { hand: number; }; }) => state.handsData.hand
 export default HandsSlice.reducer
