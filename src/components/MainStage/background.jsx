@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Stage, Container, Sprite, useTick, Text } from "@pixi/react";
-import PIXI from "pixi.js";
+import React, { useState } from "react";
+import { Sprite } from "@inlet/react-pixi";
 import { useDispatch, useSelector } from "react-redux";
 import {changeBgX, changeBgY, showBg} from "@/features/bgSlice";
 import {showHandInfo} from "@/features/handsSlice";
@@ -40,6 +39,8 @@ const Background = () => {
             setMove([Number(newPosition.x), Number(newPosition.y)])
         }
     };
+
+    console.log(bg)
 
     // @ts-ignore
     return (<>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {addObjectOnBg} from "@/features/objSlice";
-import {Container, Sprite, Stage} from "@pixi/react";
+import {Container, Sprite, Stage} from "@inlet/react-pixi";
 
 
 const PixiObjects = (props: any) => {

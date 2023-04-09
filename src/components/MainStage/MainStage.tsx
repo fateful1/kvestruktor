@@ -1,4 +1,4 @@
-import {Container, Sprite, Stage, Text } from "@pixi/react";
+import {Container, Stage } from "@inlet/react-pixi";
 import React, {useEffect, useState} from "react";
 import {Provider, useSelector} from "react-redux";
 import {showBg} from "@/features/bgSlice";
@@ -10,7 +10,7 @@ import OnePixyObject from "@/components/Objects/OnePixyObject";
 const MainStage = () => {
     const bg = useSelector(showBg);
     const objList = useSelector(showObjs)
-    // console.log(bg);
+    console.log(bg);
     console.log(objList)
     const [sizes, setSize] = useState({width: 0, height: 0})
     useEffect(() => {
@@ -24,7 +24,7 @@ const MainStage = () => {
             <Container width={sizes.width} height={sizes.height}>
                 <Provider store={rootReducer}>
                     {
-                        bg != null ? <Background /> : null
+                        bg.image != null ? <Background /> : null
                     }
                 </Provider>
                 <Provider store={rootReducer}>
