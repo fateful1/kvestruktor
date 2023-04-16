@@ -15,7 +15,7 @@ const MainStage = () => {
     const [sizes, setSize] = useState({width: 0, height: 0})
     useEffect(() => {
         if (typeof window !== "undefined") {
-            setSize({width: window.innerWidth - 410, height: window.innerHeight - 92})
+            setSize({width: window.innerWidth, height: window.innerHeight - 90})
         }
     },[])
 

@@ -2,6 +2,7 @@
 
 .menu {
   width: 399px;
+  min-width: 399px;
   height: calc(100vh - 90px);
   border-right: 2px solid get-color('grey', 7);
   //position: absolute;
@@ -19,6 +20,10 @@
   &__tab {
     &_content {
       display: none;
+
+      &:nth-child(2) {
+        padding: 32px 32px 0;
+      }
     }
 
     &_active {

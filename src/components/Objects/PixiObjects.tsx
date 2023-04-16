@@ -8,6 +8,8 @@ const PixiObjects = (props: any) => {
     const [position,setPosition]= useState({ x: 100, y: 100 });
     const dispatch = useDispatch();
 
+    console.log(props)
+
     const onDragStart = (event: any) => {
         const sprite = event.currentTarget;
         sprite.alpha = 0.5;

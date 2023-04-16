@@ -18,7 +18,6 @@ const LeftMenu = () => {
     const bg = useSelector(showBg)
 
     const changeBg = (src: string) => {
-        // @ts-ignore
         dispatch(setActiveBg({image: src, width: 1920, height: 990}))
     }
 

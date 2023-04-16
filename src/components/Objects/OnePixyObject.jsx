@@ -1,14 +1,20 @@
-import {Sprite, Container, Text, Stage} from "@pixi/react";
+import {Sprite, Container, Text, Stage} from "@inlet/react-pixi";
 import * as PIXI from 'pixi.js'
-// import {changeAngle, changeHeight, changeWidth, changeX, changeY, setCurrentObjectId, deleteObject} from "../store/reducers";
 import {useDispatch, useSelector} from "react-redux";
-// @ts-ignore
-import {Transformer} from "@pixi-essentials/react-bindings";
-import React from 'react'
-import {changeCurrentObjectId, showCurrentId, showObjs} from "@/features/objSlice";
-import {showHandInfo} from "@/features/handsSlice";
 
-// @ts-ignore
+import React from 'react'
+import {
+    changeAngle,
+    changeCurrentObjectId, changeHeight,
+    changeWidth,
+    changeX,
+    changeY,
+    showCurrentId,
+    showObjs
+} from "@/features/objSlice";
+import {showHandInfo} from "@/features/handsSlice";
+import {Transformer} from "@pixi-essentials/react-bindings";
+
 const OnePixyObject = ({props}) => {
     const style = new PIXI.TextStyle({
         fontFamily: 'Roboto',
@@ -19,8 +25,6 @@ const OnePixyObject = ({props}) => {
         stroke: '#01857b',
         strokeThickness: 1,
     })
-
-    console.log('one')
 
     const objectList = useSelector(showObjs);
     const currentObjectId = useSelector(showCurrentId);
@@ -48,24 +52,23 @@ const OnePixyObject = ({props}) => {
     function getSpriteInfo()
     {
 
-        // console.log(`x: ${transformer.current.group[0].x}`);
-        // console.log(`y: ${transformer.current.group[0].y}`);
-        // console.log(`height: ${transformer.current.group[0].height}`);
-        // console.log(`width: ${transformer.current.group[0].width}`);
-        // console.log(`angle: ${transformer.current.group[0].angle}`);
+        console.log(`x: ${transformer.current.group[0].x}`);
+        console.log(`y: ${transformer.current.group[0].y}`);
+        console.log(`height: ${transformer.current.group[0].height}`);
+        console.log(`width: ${transformer.current.group[0].width}`);
+        console.log(`angle: ${transformer.current.group[0].angle}`);
 
-        // let x = transformer.current.group[0].x;
-        // let y = transformer.current.group[0].y;
-        // let height = transformer.current.group[0].height;
-        // let width = transformer.current.group[0].width;
-        // let angle = transformer.current.group[0].angle;
-        // setMove(false)
-        // dispatch(changeX(Number(Math.round(x))));
-        // dispatch(changeY(Number(Math.round(y))));
-        // dispatch(changeAngle(Number(Math.round(angle))));
-        // dispatch(changeWidth(Number(Math.round(width))));
-        // dispatch(changeHeight(Number(Math.round(height))));
-
+        let x = transformer.current.group[0].x;
+        let y = transformer.current.group[0].y;
+        let height = transformer.current.group[0].height;
+        let width = transformer.current.group[0].width;
+        let angle = transformer.current.group[0].angle;
+        setMove(false)
+        dispatch(changeX(Number(Math.round(x))));
+        dispatch(changeY(Number(Math.round(y))));
+        dispatch(changeAngle(Number(Math.round(angle))));
+        dispatch(changeWidth(Number(Math.round(width))));
+        dispatch(changeHeight(Number(Math.round(height))));
     }
 
     return (
@@ -104,43 +107,43 @@ const OnePixyObject = ({props}) => {
                 // pointerout={e =>setMouseOver(false)}
             />
 
-            {/*<Transformer*/}
-            {/*    group={object ? [object] : []}*/}
-            {/*    skewEnabled={false}*/}
-            {/*    trasientGroupTilt={false}*/}
-            {/*    wireframeStyle={{*/}
-            {/*        thickness: 2,*/}
-            {/*        color: 0x00EAD9}}*/}
-            {/*    // pointerup={getSpriteInfo}*/}
-            {/*    // pointerupoutside={getSpriteInfo}*/}
-            {/*    // dragstart={()=>setMove(false)}*/}
-            {/*    visible={hover}*/}
-            {/*    // translateEnabled={false}*/}
-            {/*    // boxRotationEnabled={false}*/}
-            {/*    scaleEnabled={false}*/}
-            {/*    boxRotationTolerance={false}*/}
-            {/*    rotateEnabled={false}*/}
-            {/*    translateEnabled = {false}*/}
-            {/*    ref={transformer}*/}
-            {/*/>*/}
+            <Transformer
+                group={object ? [object] : []}
+                skewEnabled={false}
+                trasientGroupTilt={false}
+                wireframeStyle={{
+                    thickness: 2,
+                    color: 0x00EAD9}}
+                // pointerup={getSpriteInfo}
+                // pointerupoutside={getSpriteInfo}
+                // dragstart={()=>setMove(false)}
+                visible={hover}
+                // translateEnabled={false}
+                // boxRotationEnabled={false}
+                scaleEnabled={false}
+                boxRotationTolerance={false}
+                rotateEnabled={false}
+                translateEnabled = {false}
+                ref={transformer}
+            />
 
             {currentObjectId === props.id && mode !== 1?
                 <>
                     {/*{setMouseOver(false)}*/}
-                    {/*<Transformer*/}
-                    {/*    group={object ? [object] : []}*/}
-                    {/*    skewEnabled={false}*/}
-                    {/*    trasientGroupTilt={false}*/}
-                    {/*    wireframeStyle={{*/}
-                    {/*        thickness: 2,*/}
-                    {/*        color: 0x00EAD9}}*/}
+                    <Transformer
+                        group={object ? [object] : []}
+                        skewEnabled={false}
+                        trasientGroupTilt={false}
+                        wireframeStyle={{
+                            thickness: 2,
+                            color: 0x00EAD9}}
 
-                    {/*    pointerup={getSpriteInfo}*/}
-                    {/*    pointerupoutside={getSpriteInfo}*/}
-                    {/*    pointerinside={()=>setMove(false)}*/}
-                    {/*    pointerdown={()=>setMove(true)}*/}
-                    {/*    ref={transformer}*/}
-                    {/*/>*/}
+                        pointerup={getSpriteInfo}
+                        pointerupoutside={getSpriteInfo}
+                        pointerinside={()=>setMove(false)}
+                        pointerdown={()=>setMove(true)}
+                        ref={transformer}
+                    />
                     {
                         // <Stage >
                         //     <Sprite image={'../delete.png'} width={24} height={24} />

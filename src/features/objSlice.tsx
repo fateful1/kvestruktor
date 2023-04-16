@@ -8,8 +8,6 @@ export const ObjSlice = createSlice({
     },
     reducers: {
         addObject: (state, action) => {
-            console.log(state)
-            console.log(action)
             // @ts-ignore
             state.obj.push({
                     id:state.obj.length,
@@ -38,6 +36,26 @@ export const ObjSlice = createSlice({
             if(state.obj.length > action.payload)
                 state.currentObjectId = action.payload;
         },
+        changeWidth: (state, action) => {
+            if(state.currentObjectId!=null && state.obj.length>state.currentObjectId)
+                state.obj[state.currentObjectId].width = action.payload;
+        },
+        changeHeight: (state, action) => {
+            if(state.currentObjectId!=null && state.obj.length>state.currentObjectId)
+                state.obj[state.currentObjectId].height = action.payload;
+        },
+        changeAngle: (state, action) => {
+            if(state.currentObjectId!=null && state.obj.length>state.currentObjectId)
+                state.obj[state.currentObjectId].angle = action.payload;
+        },
+        changeX: (state, action) => {
+            if(state.currentObjectId!=null && state.obj.length>state.currentObjectId)
+                state.obj[state.currentObjectId].left = action.payload;
+        },
+        changeY: (state, action) => {
+            if(state.currentObjectId!=null && state.obj.length>state.currentObjectId)
+                state.obj[state.currentObjectId].top = action.payload;
+        },
     }
 })
 
@@ -49,7 +67,7 @@ export const changeCurrentObjectId = (id: any) => (dispatch: any) => {
     dispatch(setCurrentObjectId(id))
 }
 
-export const { addObject, setCurrentObjectId } = ObjSlice.actions
+export const { addObject, setCurrentObjectId, changeWidth, changeX, changeY, changeHeight, changeAngle } = ObjSlice.actions
 export const showObjs = (state: { objectData: { obj: any; }; }) => state.objectData.obj
 export const showCurrentId = (state: { objectData: { currentObjectId: any; }; }) => state.objectData.currentObjectId
 export default ObjSlice.reducer
