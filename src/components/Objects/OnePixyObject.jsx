@@ -1,14 +1,14 @@
-import {Sprite, Container, Text, Stage} from "@inlet/react-pixi";
+import {Sprite, Text} from "@inlet/react-pixi";
 import * as PIXI from 'pixi.js'
 import {useDispatch, useSelector} from "react-redux";
 
-import React from 'react'
+import React, {useRef, useState} from 'react'
 import {
     changeAngle,
     changeCurrentObjectId, changeHeight,
     changeWidth,
     changeX,
-    changeY,
+    changeY, deleteObject,
     showCurrentId,
     showObjs
 } from "@/features/objSlice";
@@ -32,15 +32,15 @@ const OnePixyObject = ({props}) => {
 
     const dispatch = useDispatch();
     const scale = { x: props.width, y: props.height};
-    const [move, setMove] = React.useState(false)
+    const [move, setMove] = useState(false)
     const position= { x: Number(props.left), y: Number(props.top) };
     let img = props.image
     if(props.visible === false)
         img = null
 
-    const [object, setObject] = React.useState(null);
-    const transformer = React.useRef(null);
-    const [hover, setHover] = React.useState(false);
+    const [object, setObject] = useState(null);
+    const transformer = useRef(null);
+    const [hover, setHover] = useState(false);
     function setId()
     {
         // setMouseOver(false);
@@ -97,7 +97,7 @@ const OnePixyObject = ({props}) => {
                 pointerdown={setId}
                 pointerover={() => setHover(true)}
                 pointerout={() => setHover(false)}
-                // pointerleave={() => setHover(false)}
+                pointerleave={() => setHover(false)}
                 // pointerover={() =>console.log("nya")}
                 // pointerout={() =>console.log("nonya")}
 
@@ -151,12 +151,12 @@ const OnePixyObject = ({props}) => {
                         !move ?
                             <Sprite
                                 // image={del}
-                                image={'../delete.png'}
+                                image={'../icons/delete.png'}
                                 x={position.x+scale.x/2}
                                 y={position.y-scale.y/2}
                                 buttonMode
                                 interactive
-                                // pointerdown={()=>dispatch(deleteObject())}
+                                pointerdown={()=>dispatch(deleteObject())}
                             />:null
                     }
                 </> :null}

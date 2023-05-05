@@ -4,6 +4,7 @@ import {LeftMenu} from "@/components/LeftMenu";
 import {MainStage} from "@/components/MainStage";
 import {useSelector} from "react-redux";
 import {showBg} from "@/features/bgSlice";
+import {RightMenu} from "@/components/RightMenu";
 
 export default function Home() {
     const bg = useSelector(showBg);
@@ -22,6 +23,7 @@ export default function Home() {
                       marginLeft: 'auto', marginRight: 'auto', fontWeight: 700, fontSize: '24px',
                       display: 'flex', alignItems: 'center', color: '#333333'
                   }}>Выберите фон, который хотите использовать</div>}
+                  <RightMenu/>
               </div>
           </main>
         </>
