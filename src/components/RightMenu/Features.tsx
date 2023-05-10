@@ -8,7 +8,7 @@ import {
     horizontalMirroring, showCurrentId,
     showObjs, upObject, verticalMirroring
 } from "@/features/objSlice";
-import './RightMenu.module.scss'
+import styles from './RightMenu.module.scss'
 
 const Features = () => {
     const dispatch = useDispatch();
@@ -56,9 +56,9 @@ const Features = () => {
 
     return (
         <>
-            <div className='settings_field'>
-                <div className='sub_title'>размер и угол</div>
-                <div className='settings'>
+            <div className={styles.settings__field}>
+                <div className={styles.settings__sub_title}>размер и угол</div>
+                <div className={styles.settings}>
                     <label>
                         В
                         {
@@ -83,9 +83,9 @@ const Features = () => {
                 </div>
             </div>
 
-            <div  className='settings_field'>
-                <div className='sub_title'>Положение</div>
-                <div className='settings'>
+            <div className={styles.settings__field}>
+                <div className={styles.settings__sub_title}>Положение</div>
+                <div className={styles.settings}>
                     <label>
                         X
                         {
