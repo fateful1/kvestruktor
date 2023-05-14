@@ -129,24 +129,35 @@
   display: flex;
   flex-direction: row;
   margin-top: 16px;
-}
 
-.position_button
-{
-  padding: 12px;
-  cursor: pointer;
-  position: static;
-  width: 50px;
-  height: 50px;
-  left: 0px;
-  top: 0px;
-  background: #FFFFFF;
-  box-shadow: 0px 0px 4px #BDBDBD;
-  border-radius: 8px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin: 0px 8px;
+  &__button {
+    //padding: 12px;
+    cursor: pointer;
+    position: static;
+    //width: 50px;
+    //height: 50px;
+    left: 0;
+    top: 0;
+    background: #FFFFFF;
+    //box-shadow: 0 0 4px #BDBDBD;
+    border-radius: 8px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0 8px;
+
+    &:hover {
+      & svg path {
+        &:first-of-type {
+          fill: #006666 !important;
+        }
+
+        &:last-of-type {
+          stroke: #006666 !important;
+        }
+      }
+    }
+  }
 }
 
 .position_button_image
