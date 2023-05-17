@@ -2,7 +2,7 @@ import { Sprite, Text } from "@inlet/react-pixi";
 import * as PIXI from "pixi.js";
 import { useDispatch, useSelector } from "react-redux";
 
-import React, { useRef, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {
   changeAngle,
   changeCurrentObjectId,
@@ -42,6 +42,16 @@ const OnePixyObject = ({ props }) => {
   const [object, setObject] = useState(null);
   const transformer = useRef(null);
   const [hover, setHover] = useState(false);
+  const [isTransform, setIsTransform] = useState(true)
+
+  useEffect(() => {
+    if(localStorage.getItem('hidden') === 'true') {
+      setIsTransform(true)
+    } else {
+      setIsTransform(false)
+    }
+  },[localStorage.getItem('hidden')])
+
   function setId() {
     // setMouseOver(false);
     // @ts-ignore
@@ -71,7 +81,7 @@ const OnePixyObject = ({ props }) => {
 
   return (
     <>
-      {!move ? (
+      {!move && !isTransform ? (
         <Text
           text={props.name}
           anchor={0.5}
@@ -127,27 +137,23 @@ const OnePixyObject = ({ props }) => {
         ref={transformer}
       />
 
-      {currentObjectId === props.id && mode !== 1 ? (
+      {currentObjectId === props.id && mode !== 1 && !isTransform ? (
         <>
-          {/*{setMouseOver(false)}*/}
           <Transformer
-            group={object ? [object] : []}
-            skewEnabled={false}
-            trasientGroupTilt={false}
-            wireframeStyle={{
-              thickness: 2,
-              color: 0x00ead9,
-            }}
-            pointerup={getSpriteInfo}
-            pointerupoutside={getSpriteInfo}
-            pointerinside={() => setMove(false)}
-            pointerdown={() => setMove(true)}
-            ref={transformer}
+              group={object ? [object] : []}
+              skewEnabled={false}
+              trasientGroupTilt={false}
+              wireframeStyle={{
+                thickness: 2,
+                color: 0x00ead9,
+              }}
+              pointerup={getSpriteInfo}
+              pointerupoutside={getSpriteInfo}
+              pointerinside={() => setMove(false)}
+              pointerdown={() => setMove(true)}
+              ref={transformer}
           />
           {
-            // <Stage >
-            //     <Sprite image={'../delete.png'} width={24} height={24} />
-            // </Stage>
             !move ? (
               <Sprite
                 // image={del}

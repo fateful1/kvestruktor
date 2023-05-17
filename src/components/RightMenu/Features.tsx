@@ -67,7 +67,6 @@ const Features = () => {
     dispatch(downObject());
   }
 
-  console.log(objectList[currentObjectId].visible);
   return (
     <>
       <div className={styles.settings__field}>
