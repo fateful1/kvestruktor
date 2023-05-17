@@ -30,7 +30,7 @@ const LeftMenu = () => {
 
     // @ts-ignore
     return (
-        <div className={styles.menu}>
+        <div className={styles.menu} id='left-menu'>
             <div className={styles.menu__tabs}>
                 <Tab title={'Фон'}  icon={<ImageIcon/>} onClick={() => setId(0)} isActive={id === 0} />
                 <Tab title={'Объекты'}  icon={<CardsIcon/>} onClick={() => bg.image === null ? '' : setId(1)} isActive={id === 1} disabled={bg.image === null} />

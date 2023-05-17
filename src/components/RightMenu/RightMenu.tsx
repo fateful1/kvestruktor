@@ -18,7 +18,7 @@ const RightMenu = () => {
     return (
         <>
             {
-                currentObjectId === null || mode === 1 ? null :<div className={styles.rightsidepanel}>
+                currentObjectId === null || mode === 1 ? null :<div id='right-menu' className={styles.rightsidepanel}>
                     <div className={styles.rightsidepanel__title}>{objectList[currentObjectId].name}</div>
                     <div className={styles.rightsidepanel__content}>
                         {
@@ -40,8 +40,13 @@ const RightMenu = () => {
                         }
                     </div>
                 </div>
-            }</>
+            }
+        </>
     );
 }
 
 export default RightMenu
+
+// export async function getServerSideProps(context) {
+//
+// }

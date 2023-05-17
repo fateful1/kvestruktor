@@ -13,6 +13,21 @@ const Header = () => {
         // @ts-ignore
         dispatch(setActiveHand(mode))
     },[mode])
+
+    const hideAll = () => {
+        document.getElementById('left-menu').style.display = 'none';
+        document.getElementById('right-menu').style.display = 'none';
+        document.getElementById('hide-all').style.display = 'none';
+        document.getElementById('show-all').style.display = 'flex';
+    }
+
+    const showAll = () => {
+        document.getElementById('left-menu').style.display = 'block';
+        document.getElementById('right-menu').style.display = 'block';
+        document.getElementById('hide-all').style.display = 'flex';
+        document.getElementById('show-all').style.display = 'none';
+    }
+
     return (
         <div className={styles.header}>
             <div className={styles.header__left_panel}>
@@ -30,8 +45,9 @@ const Header = () => {
                 <div className={styles.header__subtitle}>Изменения сохраняются автоматически</div>
             </div>
             <div className={styles.header__right_panel}>
-                <Button title={'Предпросмотр'} backgroundColor={'lightgreen'} icon={<VisibleIcon/>} className={styles.header__preview}/>
-                <Button title={'Далее'} backgroundColor={'green'} className={styles.header__next}/>
+                <Button title={'Предпросмотр'} backgroundColor={'lightgreen'} icon={<VisibleIcon/>} id='hide-all' className={styles.header__preview} onClick={hideAll}/>
+                <Button title={'Выйти из предпросмотра'} backgroundColor={'lightgreen'} icon={<VisibleIcon/>} id='show-all' style={{display: 'none'}} className={styles.header__preview} onClick={showAll}/>
+                <Button title={'Скачать файл'} backgroundColor={'green'} className={styles.header__next}/>
             </div>
         </div>
     )

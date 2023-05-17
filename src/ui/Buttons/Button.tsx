@@ -12,6 +12,8 @@ interface IButtonProps {
     size?: 'large'|'small'
     type?: null | 'submit'
     disabled?: boolean
+    id?: string
+    style?: Object
 }
 const Button = (props: IButtonProps) => {
     const {
@@ -22,7 +24,9 @@ const Button = (props: IButtonProps) => {
         icon,
         size = 'large',
         type,
+        id,
         disabled = false,
+        style,
     } = props
 
     return (
@@ -33,11 +37,13 @@ const Button = (props: IButtonProps) => {
                 styles[backgroundColor],
                 { [styles.large]: size === 'large' },
                 { [styles.small]: size === 'small' },
-                { [styles.disabled]: disabled }
+                { [styles.disabled]: disabled },
             )}
+            style={style}
             type={type}
             onClick={!disabled ? onClick : null}
             disabled={disabled}
+            id={id}
         >
             {icon && icon}
             {title}
