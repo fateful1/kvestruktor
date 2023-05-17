@@ -20,7 +20,7 @@ export const BgSlice = createSlice({
       state.bg.image = action.payload.image;
       state.bg.width = action.payload.width;
       // @ts-ignore
-      state.bg.left = action.payload.width / 2;
+      state.bg.left = action.payload.width / 2 + 40;
       state.bg.height = action.payload.height;
       // @ts-ignore
       state.bg.top = action.payload.height / 2;
