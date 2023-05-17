@@ -9,6 +9,7 @@ import Image from "next/image";
 import {setActiveBg, showBg} from "@/features/bgSlice";
 import { listOfObject } from "./listOfObjects";
 import {Objects} from "@/components/Objects";
+import {Layers} from "@/components/Layers";
 
 const LeftMenu = () => {
     const dispatch = useDispatch()
@@ -49,7 +50,9 @@ const LeftMenu = () => {
                         <Objects title={element.title} content={element.content} key={element.id}/>
                     )}
                 </div>
-                <div className={classNames(styles.menu__tab_content, id === 2 ? styles.menu__tab_active : '')}>Слои</div>
+                <div className={classNames(styles.menu__tab_content, id === 2 ? styles.menu__tab_active : '')}>
+                    <Layers/>
+                </div>
             </div>
         </div>
     )

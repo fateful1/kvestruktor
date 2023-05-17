@@ -1,4 +1,4 @@
-import {Action, createSlice} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 export const ObjSlice = createSlice({
     name: 'obj',
@@ -114,8 +114,7 @@ export const ObjSlice = createSlice({
         {
             if(state.currentObjectId!=null && state.obj.length>state.currentObjectId)
             {
-                let w= -state.obj[state.currentObjectId].width;
-                state.obj[state.currentObjectId].width = w;
+                state.obj[state.currentObjectId].width = -state.obj[state.currentObjectId].width;
                 // let c = state.currentObjectId
                 // state.currentObjectId = null
                 // state.currentObjectId = c
@@ -137,6 +136,10 @@ export const ObjSlice = createSlice({
         changeVisibility:(state)=>
         {
             if(state.currentObjectId!=null && state.obj.length>state.currentObjectId)
+                console.log(state.obj[state.currentObjectId].visible)
+            console.log(state.obj.length)
+            console.log(state.currentObjectId)
+            console.log(state.obj[state.currentObjectId])
                 state.obj[state.currentObjectId].visible = !state.obj[state.currentObjectId].visible;
         },
         upObject:(state)=>
@@ -220,10 +223,11 @@ export const {
     changeBecomeUnvisible,
     changeActionClick,
     changeTask,
+    changeList,
     makeCopy,
     changeName,
     addText
 } = ObjSlice.actions;
-export const showObjs = (state: { objectData: { obj: any; }; }) => state.objectData.obj
-export const showCurrentId = (state: { objectData: { currentObjectId: any; }; }) => state.objectData.currentObjectId
+export const showObjs = (state: any) => state.objectData.present.obj
+export const showCurrentId = (state: any) => state.objectData.present.currentObjectId
 export default ObjSlice.reducer

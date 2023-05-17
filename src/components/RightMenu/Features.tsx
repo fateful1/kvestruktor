@@ -27,7 +27,7 @@ const Features = () => {
     }
 
     function handleInputChangeAngle(event: { target: { value: any; }; }) {
-        let str = String(event.target.value).replace('\u00B0','');;
+        let str = String(event.target.value).replace('\u00B0','');
         dispatch(changeAngle(Number(str)));
     }
 
@@ -57,6 +57,7 @@ const Features = () => {
         dispatch(downObject());
     }
 
+    console.log(objectList[currentObjectId].visible)
     return (
         <>
             <div className={styles.settings__field}>
@@ -122,7 +123,7 @@ const Features = () => {
             </div>
             <div className={styles.position}>
                 <div className={styles.position__button} onClick={()=>handleInputUpObject()}>
-                    <ButtonIcon icon={<LayersUpIcon/>} className={styles.position__button}/>
+                    <ButtonIcon icon={<LayersUpIcon/>}/>
                 </div>
                 <div className={styles.position__button} onClick={()=>handleInputDownObject()}>
                     <ButtonIcon icon={<LayersDownIcon/>}/>
@@ -137,13 +138,13 @@ const Features = () => {
             <div className={styles.settings__field}>
                 <div className={styles.settings__sub_title}>объект изначально</div>
                 { objectList[currentObjectId].visible ?
-                    <Tabs options={['ВИДЕН', 'СКРЫТ']} onChange={()=>handleInputChangeVisibility()} defaultValue={0}/>
+                    <Tabs options={['ВИДЕН', 'СКРЫТ']} onClick={()=>handleInputChangeVisibility()}/>
                     // <div className='hidden_switch'>
                     //     <div className='hidden_switch_position hidden_switch_position_active'>виден</div>
                     //     <div className='hidden_switch_position' onClick={()=>{handleInputChangeVisibility()}}>скрыт</div>
                     // </div>
                     :
-                    <Tabs options={['ВИДЕН', 'СКРЫТ']} onChange={()=>handleInputChangeVisibility()} defaultValue={1}/>
+                    <Tabs options={['ВИДЕН', 'СКРЫТ']} onClick={()=>handleInputChangeVisibility()}/>
                     // <div className='hidden_switch'>
                     //     <div className='hidden_switch_position' onClick={()=>{ handleInputChangeVisibility()}}>виден</div>
                     //     <div className='hidden_switch_position hidden_switch_position_active'>скрыт</div>

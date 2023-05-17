@@ -1,0 +1,124 @@
+.layers {
+  &_list
+  {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px;
+
+    /*position: absolute;*/
+    width: 336px;
+    height: 168px;
+    left: 32px;
+    top: 32px;
+  }
+
+  &_image
+  {
+    width: 24px;
+    height: 24px;
+    /*flex: none;*/
+    /*order: 0;*/
+    /*flex-grow: 0;*/
+
+    //background: url('/drag_dots.svg') no-repeat;
+
+    &_menu
+    {
+      width: 24px;
+      height: 24px;
+      margin-left: auto;
+      margin-right: 10px;
+      /* background: url('context_menu.svg') no-repeat; */
+      align-self: flex-end;
+      cursor: pointer;
+    }
+  }
+
+  &_name
+  {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    /*align-items: center;*/
+    padding: 16px 0;
+    gap: 8px;
+    width: 336px;
+    height: 56px;
+    font-family: 'Roboto';
+    font-style: normal;
+    //font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    /* Basic / White */
+
+    /*background-color: #D22D25;*/
+    border-radius: 3px;
+
+    /* Inside auto layout */
+
+    /*flex: none;*/
+    /*order: 0;*/
+    /*flex-grow: 0;*/
+  }
+
+  &_context_menu
+  {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 16px;
+    position: absolute;
+    width: 194px;
+    height: 136px;
+    background: #FFFFFF;
+    margin-left: 150px;
+    margin-top: 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  &_item
+  {
+    cursor:pointer;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #333333;
+  }
+
+  &_input
+  {
+    outline:none;
+    border: none;
+    background: rgb(230, 240, 240);
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #006666;
+
+    &:focus
+    {
+      border: none;
+      outline:none;
+    }
+  }
+}
+
+//.layer:hover .layers_name
+//{
+//  background: #E6F0F0;
+//  border-radius: 3px;
+//  cursor: pointer;
+//
+//}
+
+//.layers_item:hover
+//{
+//  color: #019494;
+//}

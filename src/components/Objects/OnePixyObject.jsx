@@ -52,11 +52,11 @@ const OnePixyObject = ({props}) => {
     function getSpriteInfo()
     {
 
-        console.log(`x: ${transformer.current.group[0].x}`);
-        console.log(`y: ${transformer.current.group[0].y}`);
-        console.log(`height: ${transformer.current.group[0].height}`);
-        console.log(`width: ${transformer.current.group[0].width}`);
-        console.log(`angle: ${transformer.current.group[0].angle}`);
+        // console.log(`x: ${transformer.current.group[0].x}`);
+        // console.log(`y: ${transformer.current.group[0].y}`);
+        // console.log(`height: ${transformer.current.group[0].height}`);
+        // console.log(`width: ${transformer.current.group[0].width}`);
+        // console.log(`angle: ${transformer.current.group[0].angle}`);
 
         let x = transformer.current.group[0].x;
         let y = transformer.current.group[0].y;

@@ -9,12 +9,12 @@ interface ITabs {
 	label?: string
 	defaultValue?: number
 	labelHint?: string | JSX.Element
-	onChange: Dispatch<SetStateAction<number>>
+	onClick: Dispatch<SetStateAction<number>>
 	onBlur?: () => void
 }
 
 const Tabs = (props: ITabs) => {
-	const { options, defaultValue, containerClassName, labelClassName, label, labelHint, onChange } =
+	const { options, defaultValue = 0, containerClassName, labelClassName, label, labelHint, onClick } =
 		props
 
 	const [activeTab, setActiveTab] = useState(
@@ -23,8 +23,13 @@ const Tabs = (props: ITabs) => {
 			: 0
 	)
 
+	const changeTabHandler = (index: number) => {
+		onClick?.(index);
+		setActiveTab(index)
+	}
+
 	useEffect(() => {
-		onChange(activeTab)
+		//onClick(activeTab)
 	}, [activeTab])
 
 	return (
@@ -41,7 +46,7 @@ const Tabs = (props: ITabs) => {
 						<div
 							key={index}
 							className={classNames(styles.tab, activeTab === index ? styles.active : '')}
-							onClick={() => setActiveTab(index)}
+							onClick={() => changeTabHandler(index)}
 							style={{
 								width: `${100 / options.length}%`,
 								color: activeTab === index ? '#FFFFFF' : '',
