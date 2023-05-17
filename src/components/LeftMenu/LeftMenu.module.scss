@@ -1,10 +1,10 @@
-@import 'src/assets/styles/colors';
+@import "src/assets/styles/colors";
 
 .menu {
   width: 399px;
   min-width: 399px;
   height: calc(100vh - 90px);
-  border-right: 2px solid get-color('grey', 7);
+  border-right: 2px solid get-color("grey", 7);
   //position: absolute;
 
   &__tabs {
@@ -13,7 +13,6 @@
     justify-content: space-between;
 
     &_contents {
-
     }
   }
 

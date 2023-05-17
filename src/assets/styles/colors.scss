@@ -1,30 +1,30 @@
 $palette: (
-    'green': (
-            1: #006666,
-            2: #3AB8BC,
-            3: #E6F0F0
-    ),
-    'white': (
-            1: #FFFFFF
-    ),
-    'black': (
-            1: #000000
-    ),
-    'grey': (
-            1: #FCFBFB,
-            2: #BDBDBD,
-            3: #828282,
-            4: #333333,
-            5: #979797,
-            6: #4F4F4F,
-            7: #E0E0E0,
-    ),
-    'red': (
-            1: #D22D25
-    ),
-    'blue': (
-            1: #00EAD9
-    )
+  "green": (
+    1: #006666,
+    2: #3ab8bc,
+    3: #e6f0f0,
+  ),
+  "white": (
+    1: #ffffff,
+  ),
+  "black": (
+    1: #000000,
+  ),
+  "grey": (
+    1: #fcfbfb,
+    2: #bdbdbd,
+    3: #828282,
+    4: #333333,
+    5: #979797,
+    6: #4f4f4f,
+    7: #e0e0e0,
+  ),
+  "red": (
+    1: #d22d25,
+  ),
+  "blue": (
+    1: #00ead9,
+  ),
 );
 
 @function get-color($name, $variant: 1, $opacity: 1) {
@@ -33,10 +33,13 @@ $palette: (
   @if $color-spectrum {
     $color: map-get($color-spectrum, $variant);
   }
-  $alpha: if(type-of($opacity) == 'number', $opacity, map-get($opacity, $opacity));
+  $alpha: if(
+    type-of($opacity) == "number",
+    $opacity,
+    map-get($opacity, $opacity)
+  );
   @if $alpha {
     $color: rgba($color, $alpha);
   }
   @return $color;
 }
-

@@ -1,6 +1,5 @@
 .layers {
-  &_list
-  {
+  &_list {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -13,8 +12,7 @@
     top: 32px;
   }
 
-  &_image
-  {
+  &_image {
     width: 24px;
     height: 24px;
     /*flex: none;*/
@@ -23,8 +21,7 @@
 
     //background: url('/drag_dots.svg') no-repeat;
 
-    &_menu
-    {
+    &_menu {
       width: 24px;
       height: 24px;
       margin-left: auto;
@@ -35,8 +32,7 @@
     }
   }
 
-  &_name
-  {
+  &_name {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -45,7 +41,7 @@
     gap: 8px;
     width: 336px;
     height: 56px;
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-style: normal;
     //font-weight: 400;
     font-size: 18px;
@@ -62,8 +58,7 @@
     /*flex-grow: 0;*/
   }
 
-  &_context_menu
-  {
+  &_context_menu {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -73,39 +68,36 @@
     position: absolute;
     width: 194px;
     height: 136px;
-    background: #FFFFFF;
+    background: #ffffff;
     margin-left: 150px;
     margin-top: 30px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
   }
 
-  &_item
-  {
-    cursor:pointer;
+  &_item {
+    cursor: pointer;
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
     color: #333333;
   }
 
-  &_input
-  {
-    outline:none;
+  &_input {
+    outline: none;
     border: none;
     background: rgb(230, 240, 240);
 
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 24px;
     color: #006666;
 
-    &:focus
-    {
+    &:focus {
       border: none;
-      outline:none;
+      outline: none;
     }
   }
 }
