@@ -51,10 +51,10 @@ const LayerObject = (props: ILayerObject) => {
           <DragDotsIcon />
           <div>{name}</div>
           <div
-              className={styles.layers_image_menu}
+              className={styles.layers_image_lock}
               onClick={() => setMenuIsOpen(!menuIsOpen)}
           >
-            <img src='/icons/lock.png' alt='' /> {/*TODO: ПЕРЕДЕЛАЙ ИКОНКУ*/}
+            <img src='/icons/lock2.png' alt=''  /> {/*TODO: ПЕРЕДЕЛАЙ ИКОНКУ*/}
           </div>
           <div
             className={styles.layers_image_menu}
