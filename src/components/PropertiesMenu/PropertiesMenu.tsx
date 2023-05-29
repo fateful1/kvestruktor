@@ -1,20 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import { useSelector } from "react-redux";
-import Features from "@/components/RightMenu/Features";
-import Actions from "@/components/RightMenu/Actions";
+import Features from "@/components/PropertiesMenu/Features";
+import Actions from "@/components/PropertiesMenu/Actions";
 import { showCurrentId, showObjs } from "@/features/objSlice";
 import { showBg } from "@/features/bgSlice";
 import { showHandInfo } from "@/features/handsSlice";
-import styles from "./RightMenu.module.scss";
+import styles from "./PropertiesMenu.module.scss";
 import classNames from "classnames";
 
-const RightMenu = () => {
+const PropertiesMenu = () => {
   const objectList = useSelector(showObjs);
   const currentObjectId = useSelector(showCurrentId);
   const mode = useSelector(showHandInfo);
   const backgroundImage = useSelector(showBg);
-  const [characteristicsIsOpen, setCharacteristicsIsOpen] =
-    React.useState(true);
+  const [characteristicsIsOpen, setCharacteristicsIsOpen] = useState(true);
 
   return (
     <>
@@ -74,7 +73,7 @@ const RightMenu = () => {
   );
 };
 
-export default RightMenu;
+export default PropertiesMenu;
 
 // export async function getServerSideProps(context) {
 //

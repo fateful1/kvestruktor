@@ -1,2 +1,2 @@
-export { default as MainStage } from "./MainStage";
+export { default as MainArea } from "./MainArea";
 export { default as Background } from "./background";

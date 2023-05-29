@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
+import {MainAreaObject} from "@/models/ObjectTypes";
 
 export const ObjSlice = createSlice({
   name: "obj",
@@ -23,12 +24,13 @@ export const ObjSlice = createSlice({
         buttonMode: true,
         actionClick: false,
         fullwidth: false,
-        inBack: false, // объект улетает в рюкзак
+        inBackpack: false, // объект улетает в рюкзак
         simpleInfo: false, //появляется подсказка
         task: null, //появляется задание
         becomeVisible: false, //становится видимым
         becomeUnvisible: false, //становится невидимым
         info: null,
+        locked: false,
       });
     },
     setCurrentObjectId: (state, action) => {
@@ -100,7 +102,7 @@ export const ObjSlice = createSlice({
       ) {
         state.obj[state.currentObjectId].actionClick = action.payload;
         if (action.payload === false) {
-          state.obj[state.currentObjectId].inBack = action.payload;
+          state.obj[state.currentObjectId].inBackpack = action.payload;
           state.obj[state.currentObjectId].simpleInfo = action.payload;
           state.obj[state.currentObjectId].info = null;
           state.obj[state.currentObjectId].becomeVisible = action.payload;
@@ -115,7 +117,7 @@ export const ObjSlice = createSlice({
         state.currentObjectId != null &&
         state.obj.length > state.currentObjectId
       )
-        state.obj[state.currentObjectId].inBack = action.payload;
+        state.obj[state.currentObjectId].inBackpack = action.payload;
     },
     changeAddAHint: (state, action) => {
       //появляется подсказка
@@ -160,9 +162,6 @@ export const ObjSlice = createSlice({
       ) {
         state.obj[state.currentObjectId].width =
           -state.obj[state.currentObjectId].width;
-        // let c = state.currentObjectId
-        // state.currentObjectId = null
-        // state.currentObjectId = c
       }
     },
     verticalMirroring: (state) => {
@@ -170,12 +169,11 @@ export const ObjSlice = createSlice({
         state.currentObjectId != null &&
         state.obj.length > state.currentObjectId
       ) {
-        let h = -state.obj[state.currentObjectId].height;
-        state.obj[state.currentObjectId].height = h;
-        // let c = state.currentObjectId
-        // state.currentObjectId = null
-        // state.currentObjectId = c
+        state.obj[state.currentObjectId].height = -state.obj[state.currentObjectId].height;
       }
+    },
+    changeLock: (state) => {
+      state.obj[state.currentObjectId].locked = !state.obj[state.currentObjectId].locked
     },
     changeVisibility: (state) => {
       if (
@@ -224,7 +222,7 @@ export const ObjSlice = createSlice({
     },
     makeCopy: (state) => {
       if (state.obj.length > 0) {
-        state.obj.push({
+        let objToPush : MainAreaObject = {
           id: state.obj.length,
           image: state.obj[state.currentObjectId].image,
           name: state.obj[state.currentObjectId].name,
@@ -232,18 +230,19 @@ export const ObjSlice = createSlice({
           height: state.obj[state.currentObjectId].height,
           angle: state.obj[state.currentObjectId].angle,
           left: state.obj[state.currentObjectId].left,
-          top: state.obj[state.currentObjectId].left,
+          top: state.obj[state.currentObjectId].top,
           visible: state.obj[state.currentObjectId].visible,
           interactive: state.obj[state.currentObjectId].interactive,
           buttonMode: state.obj[state.currentObjectId].buttonMode,
           actionClick: state.obj[state.currentObjectId].actionClick,
           fullwidth: state.obj[state.currentObjectId].fullwidth,
-          inBack: state.obj[state.currentObjectId].inBack, // объект улетает в рюкзак
+          inBackpack: state.obj[state.currentObjectId].inBackpack, // объект улетает в рюкзак
           simpleInfo: state.obj[state.currentObjectId].simpleInfo, //появляется подсказка
           task: state.obj[state.currentObjectId].task, //появляется задание
           becomeVisible: state.obj[state.currentObjectId].becomeVisible, //становится видимым
           becomeUnvisible: state.obj[state.currentObjectId].becomeUnvisible, //становится невидимым
-        });
+        }
+        state.obj.push(objToPush);
       }
     },
   },
@@ -258,8 +257,6 @@ export const changeCurrentObjectId = (id: any) => (dispatch: any) => {
 };
 
 export const {
-  // setCursorMode,
-  // setHandMode,
   changeWidth,
   changeHeight,
   changeAngle,
@@ -283,6 +280,7 @@ export const {
   makeCopy,
   changeName,
   addText,
+  changeLock
 } = ObjSlice.actions;
 export const showObjs = (state: any) => state.objectData.present.obj;
 export const showCurrentId = (state: any) =>

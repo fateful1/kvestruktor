@@ -1,4 +1,4 @@
-import "../index.scss";
+import "../assets/styles/index.scss";
 import "normalize.css";
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";

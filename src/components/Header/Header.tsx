@@ -48,7 +48,7 @@ const Header = () => {
     let innerStr = ''
     objectList.forEach(function(item: any, i: any, arr: any) {
       console.log(item.top);
-      innerStr+=`{name:"${item.name}", width:"${item.width}", left:"${item.left}", top:"${item.top}", height:"${item.height}", visible:${item.visible}, interactive:${item.interactive},buttonMode:${item.interactive}, fullwidth: false,  img:"${item.image}", simpleInfo:${item.simpleInfo}, info:{ru: "${item.info}"}, inBack:"${item.inBack}"},\n`
+      innerStr+=`{name:"${item.name}", width:"${item.width}", left:"${item.left}", top:"${item.top}", height:"${item.height}", visible:${item.visible}, interactive:${item.interactive},buttonMode:${item.interactive}, fullwidth: false,  img:"${item.image}", simpleInfo:${item.simpleInfo}, info:{ru: "${item.info}"}, inBackpack:"${item.inBackpack}"},\n`
     });
     const element = document.createElement("a");
     let str =`var arr = [{name: "Room", width:"${bg.width}", left:"${bg.left}", top:"${bg.top}", height:"${bg.height}", visible:true, interactive:${bg.interactive},buttonMode:${bg.interactive}, fullwidth: true, img:"${bg.image}"},\n ${innerStr}]; \n export { arr }`;

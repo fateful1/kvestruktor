@@ -2,12 +2,12 @@ import { Container, Stage } from "@inlet/react-pixi";
 import React, { useEffect, useState } from "react";
 import { Provider, useSelector } from "react-redux";
 import { showBg } from "@/features/bgSlice";
-import { Background } from "@/components/MainStage/index";
+import { Background } from "@/components/MainArea/index";
 import { rootReducer } from "@/app/store";
 import { showObjs } from "@/features/objSlice";
 import OnePixyObject from "@/components/Objects/OnePixyObject";
 
-const MainStage = () => {
+const MainArea = () => {
   const bg = useSelector(showBg);
   const objList = useSelector(showObjs);
   console.log(bg);
@@ -15,7 +15,7 @@ const MainStage = () => {
   const [sizes, setSize] = useState({ width: 0, height: 0 });
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setSize({ width: window.innerWidth, height: window.innerHeight - 90 });
+      setSize({ width: window.innerWidth, height: window.innerHeight });
     }
   }, []);
 
@@ -39,4 +39,4 @@ const MainStage = () => {
   );
 };
 
-export default MainStage;
+export default MainArea;

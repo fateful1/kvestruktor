@@ -7,6 +7,7 @@ import {
   changeAngle,
   changeCurrentObjectId,
   changeHeight,
+  changeLock,
   changeWidth,
   changeX,
   changeY,
@@ -32,6 +33,8 @@ const OnePixyObject = ({ props }) => {
   const currentObjectId = useSelector(showCurrentId);
   const mode = useSelector(showHandInfo);
 
+  console.log(objectList[currentObjectId])
+
   const dispatch = useDispatch();
   const scale = { x: props.width, y: props.height };
   const [move, setMove] = useState(false);
@@ -39,7 +42,7 @@ const OnePixyObject = ({ props }) => {
   let img = props.image;
   if (props.visible === false) img = null;
 
-  const [object, setObject] = useState(null);
+  const [sprite, setSprite] = useState(null);
   const transformer = useRef(null);
   const [hover, setHover] = useState(false);
   const [isTransform, setIsTransform] = useState(true)
@@ -59,7 +62,7 @@ const OnePixyObject = ({ props }) => {
     setMove(false);
   }
 
-  function getSpriteInfo() {
+  function setSpriteInfo() {
     // console.log(`x: ${transformer.current.group[0].x}`);
     // console.log(`y: ${transformer.current.group[0].y}`);
     // console.log(`height: ${transformer.current.group[0].height}`);
@@ -92,7 +95,7 @@ const OnePixyObject = ({ props }) => {
       ) : null}
       <Sprite
         ref={(g) => {
-          setObject(g);
+          setSprite(g);
         }}
         image={img}
         x={position.x}
@@ -117,7 +120,7 @@ const OnePixyObject = ({ props }) => {
       />
 
       <Transformer
-        group={object ? [object] : []}
+        group={sprite ? [sprite] : []}
         skewEnabled={false}
         trasientGroupTilt={false}
         wireframeStyle={{
@@ -140,15 +143,14 @@ const OnePixyObject = ({ props }) => {
       {currentObjectId === props.id && mode !== 1 && !isTransform ? (
         <>
           <Transformer
-              group={object ? [object] : []}
+              group={sprite ? [sprite] : []}
               skewEnabled={false}
               trasientGroupTilt={false}
               wireframeStyle={{
-                thickness: 2,
-                color: 0x00ead9,
+                thickness: 2, color: 0x3AB8BC,
               }}
-              pointerup={getSpriteInfo}
-              pointerupoutside={getSpriteInfo}
+              pointerup={setSpriteInfo}
+              pointerupoutside={setSpriteInfo}
               pointerinside={() => setMove(false)}
               pointerdown={() => setMove(true)}
               ref={transformer}
@@ -158,13 +160,36 @@ const OnePixyObject = ({ props }) => {
               <Sprite
                 // image={del}
                 image={"../icons/delete.png"}
-                x={position.x + scale.x / 2}
+                x={position.x + scale.x / 1.6}
                 y={position.y - scale.y / 2}
                 buttonMode
                 interactive
                 pointerdown={() => dispatch(deleteObject())}
               />
             ) : null
+          }
+          {
+            !objectList[currentObjectId].locked ? (
+                <Sprite
+                    // image={del}
+                    image={"../icons/lock.png"}
+                    x={position.x + scale.x / 2}
+                    y={position.y - scale.y / 2}
+                    buttonMode
+                    interactive
+                    pointerdown={() => dispatch(changeLock())}
+                />
+            ) : (
+                <Sprite
+                    // image={del}
+                    image={"../icons/locked.png"}
+                    x={position.x + scale.x / 1.73}
+                    y={position.y - scale.y / 2.55}
+                    buttonMode
+                    interactive
+                    pointerdown={() => dispatch(changeLock())}
+                />
+            )
           }
         </>
       ) : null}

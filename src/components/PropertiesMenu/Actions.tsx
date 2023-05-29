@@ -11,7 +11,7 @@ import {
   showCurrentId,
   showObjs,
 } from "@/features/objSlice";
-import styles from "./RightMenu.module.scss";
+import styles from "./PropertiesMenu.module.scss";
 import { DeleteIcon, PlusIcon } from "@/ui/icons";
 
 const Actions = () => {
@@ -142,7 +142,7 @@ const Actions = () => {
 
             <div className={styles.add_an_event_card_content}>
               <div className={styles.settings__sub_title}>Действия</div>
-              {objectList[currentObjectId].inBack ? (
+              {objectList[currentObjectId].inBackpack ? (
                 <>
                   {" "}
                   <div className={styles.action_item}>

@@ -13,7 +13,7 @@ import {
   upObject,
   verticalMirroring,
 } from "@/features/objSlice";
-import styles from "./RightMenu.module.scss";
+import styles from "./PropertiesMenu.module.scss";
 import { ButtonIcon } from "@/ui/Buttons";
 import {
   LayersDownIcon,

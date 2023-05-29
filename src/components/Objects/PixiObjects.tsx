@@ -7,41 +7,35 @@ const PixiObjects = (props: any) => {
   const [position, setPosition] = useState({ x: 100, y: 100 });
   const dispatch = useDispatch();
 
+  const obj = props.props;
   console.log(props);
 
-  const onDragStart = (event: any) => {
+  const onDragStart = (event: PIXI.InteractionEvent) => {
     const sprite = event.currentTarget;
     sprite.alpha = 0.5;
     sprite.data = event.data;
     sprite.dragging = true;
-    console.log("start");
   };
 
-  const onDragEnd = (event: any) => {
-    console.log("end");
+  const onDragEnd = (event: PIXI.InteractionEvent) => {
     const sprite = event.currentTarget;
     sprite.alpha = 1;
     sprite.dragging = false;
-    // if(position.x>350){
     setPosition({ x: 100, y: 100 });
-    // @ts-ignore
     dispatch(
       addObjectOnBg({
-        name: props.props.name,
-        width: props.props.width,
-        height: props.props.height,
-        image: props.props.url,
+        name: obj.name,
+        image: obj.url,
+        width: obj.width,
+        height: obj.height,
         left: position.x,
         top: position.y,
       })
     );
-    // }
-    setPosition({ x: 100, y: 100 });
     sprite.data = null;
   };
 
-  const onDragMove = (event: any) => {
-    console.log("move");
+  const onDragMove = (event: PIXI.InteractionEvent) => {
     const sprite = event.currentTarget;
     if (sprite.dragging) {
       const newPosition = sprite.data.getLocalPosition(sprite.parent);
@@ -51,15 +45,15 @@ const PixiObjects = (props: any) => {
 
   return (
     <Stage
-      width={props.props.width}
-      height={props.props.height}
+      width={obj.width}
+      height={obj.height}
       options={{ backgroundColor: 0xffffff }}
     >
-      <Container width={props.props.width}>
+      <Container width={obj.width}>
         <Sprite
-          width={props.props.width}
-          height={props.props.height}
-          image={props.props.url}
+          width={obj.width}
+          height={obj.height}
+          image={obj.url}
           x={position.x}
           y={position.y}
           interactive
@@ -73,9 +67,9 @@ const PixiObjects = (props: any) => {
           zIndex={150}
         />
         <Sprite
-          width={props.props.width}
-          height={props.props.height}
-          image={props.props.url}
+          width={obj.width}
+          height={obj.height}
+          image={obj.url}
           x={100}
           y={100}
           anchor={0.5}

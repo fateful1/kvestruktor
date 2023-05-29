@@ -11,7 +11,7 @@ import { listOfObject } from "./listOfObjects";
 import { Objects } from "@/components/Objects";
 import { Layers } from "@/components/Layers";
 
-const LeftMenu = () => {
+const LeftMenu = (props: any) => {
   const dispatch = useDispatch();
   const [id, setId] = useState<number>(0);
 
@@ -21,6 +21,7 @@ const LeftMenu = () => {
   const changeBg = (src: string) => {
     dispatch(setActiveBg({ image: src, width: 1920, height: 990 }));
   };
+  console.log(props)
 
   useEffect(() => {
     // @ts-ignore
@@ -112,7 +113,7 @@ const LeftMenu = () => {
             id === 1 ? styles.menu__tab_active : ""
           )}
         >
-          {listOfObject.map((element) => (
+          {props.objects.map((element: any) => (
             <Objects
               title={element.title}
               content={element.content}

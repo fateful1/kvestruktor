@@ -1,13 +1,16 @@
 import Head from "next/head";
 import { Header } from "@/components/Header";
 import { LeftMenu } from "@/components/LeftMenu";
-import { MainStage } from "@/components/MainStage";
+import { MainArea } from "@/components/MainArea";
 import { useSelector } from "react-redux";
 import { showBg } from "@/features/bgSlice";
-import { RightMenu } from "@/components/RightMenu";
+import { PropertiesMenu } from "@/components/PropertiesMenu";
+import {getObjects} from "@/pages/api/hello";
 
-export default function Home() {
+export default function Home(props: any) {
   const bg = useSelector(showBg);
+  console.log(props)
+
   return (
     <>
       <Head>
@@ -18,9 +21,9 @@ export default function Home() {
       <main>
         <Header />
         <div style={{ display: "flex" }}>
-          <LeftMenu />
+          <LeftMenu objects={props.objects.objects} />
           {bg.image !== null ? (
-            <MainStage />
+            <MainArea />
           ) : (
             <div
               style={{
@@ -36,9 +39,17 @@ export default function Home() {
               Выберите фон, который хотите использовать
             </div>
           )}
-          <RightMenu />
+          <PropertiesMenu />
         </div>
       </main>
     </>
   );
+}
+
+
+export async function getServerSideProps() {
+    const data = await getObjects();
+    return {
+        props: { objects: JSON.parse(JSON.stringify(data)) },
+    }
 }
