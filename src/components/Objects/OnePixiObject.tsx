@@ -18,7 +18,7 @@ import {
 import { showHandInfo } from "@/features/handsSlice";
 import { Transformer } from "@pixi-essentials/react-bindings";
 
-const OnePixyObject = ({ props }) => {
+const OnePixiObject = ({ props }) => {
   const style = new PIXI.TextStyle({
     fontFamily: "Roboto",
     fontSize: 20,
@@ -32,8 +32,6 @@ const OnePixyObject = ({ props }) => {
   const objectList = useSelector(showObjs);
   const currentObjectId = useSelector(showCurrentId);
   const mode = useSelector(showHandInfo);
-
-  console.log(objectList[currentObjectId])
 
   const dispatch = useDispatch();
   const scale = { x: props.width, y: props.height };
@@ -56,45 +54,38 @@ const OnePixyObject = ({ props }) => {
   },[localStorage.getItem('hidden')])
 
   function setId() {
-    // setMouseOver(false);
-    // @ts-ignore
     dispatch(changeCurrentObjectId(props.id));
     setMove(false);
   }
-
+  // @ts-ignore
   function setSpriteInfo() {
-    // console.log(`x: ${transformer.current.group[0].x}`);
-    // console.log(`y: ${transformer.current.group[0].y}`);
-    // console.log(`height: ${transformer.current.group[0].height}`);
-    // console.log(`width: ${transformer.current.group[0].width}`);
-    // console.log(`angle: ${transformer.current.group[0].angle}`);
-
-    let x = transformer.current.group[0].x;
-    let y = transformer.current.group[0].y;
-    let height = transformer.current.group[0].height;
-    let width = transformer.current.group[0].width;
-    let angle = transformer.current.group[0].angle;
-    setMove(false);
-    dispatch(changeX(Number(Math.round(x))));
-    dispatch(changeY(Number(Math.round(y))));
-    dispatch(changeAngle(Number(Math.round(angle))));
-    dispatch(changeWidth(Number(Math.round(width))));
-    dispatch(changeHeight(Number(Math.round(height))));
+      let x = transformer.current.group[0].x;
+      let y = transformer.current.group[0].y;
+      let height = transformer.current.group[0].height;
+      let width = transformer.current.group[0].width;
+      let angle = transformer.current.group[0].angle;
+      setMove(false);
+      dispatch(changeX(Number(Math.round(x))));
+      dispatch(changeY(Number(Math.round(y))));
+      dispatch(changeAngle(Number(Math.round(angle))));
+      dispatch(changeWidth(Number(Math.round(width))));
+      dispatch(changeHeight(Number(Math.round(height))));
   }
 
-  return (
+  // @ts-ignore
+    return (
     <>
       {!move && !isTransform ? (
         <Text
           text={props.name}
           anchor={0.5}
-          x={position.x - scale.x / 2 + 30}
-          y={position.y - scale.y / 2 - 20}
+          x={position.x - scale.x / 1000}
+          y={position.y - scale.y / 1.75}
           style={style}
         />
       ) : null}
       <Sprite
-        ref={(g) => {
+        ref={(g: any) => {
           setSprite(g);
         }}
         image={img}
@@ -143,7 +134,7 @@ const OnePixyObject = ({ props }) => {
       {currentObjectId === props.id && mode !== 1 && !isTransform ? (
         <>
           <Transformer
-              group={sprite ? [sprite] : []}
+              group={sprite && !objectList[currentObjectId].locked ? [sprite] : []}
               skewEnabled={false}
               trasientGroupTilt={false}
               wireframeStyle={{
@@ -152,15 +143,18 @@ const OnePixyObject = ({ props }) => {
               pointerup={setSpriteInfo}
               pointerupoutside={setSpriteInfo}
               pointerinside={() => setMove(false)}
-              pointerdown={() => setMove(true)}
+              pointerdown={() => {
+                if(!objectList[currentObjectId].locked) {
+                  setMove(true)
+                }}
+              }
               ref={transformer}
           />
           {
-            !move ? (
+            !move  ? (
               <Sprite
-                // image={del}
-                image={"../icons/delete.png"}
-                x={position.x + scale.x / 1.6}
+                image={"../icons/delete1111111.png"}
+                x={position.x + scale.x / 1.2}
                 y={position.y - scale.y / 2}
                 buttonMode
                 interactive
@@ -169,27 +163,16 @@ const OnePixyObject = ({ props }) => {
             ) : null
           }
           {
-            !objectList[currentObjectId].locked ? (
-                <Sprite
-                    // image={del}
-                    image={"../icons/lock.png"}
-                    x={position.x + scale.x / 2}
-                    y={position.y - scale.y / 2}
-                    buttonMode
-                    interactive
-                    pointerdown={() => dispatch(changeLock())}
-                />
-            ) : (
-                <Sprite
-                    // image={del}
-                    image={"../icons/locked.png"}
-                    x={position.x + scale.x / 1.73}
-                    y={position.y - scale.y / 2.55}
-                    buttonMode
-                    interactive
-                    pointerdown={() => dispatch(changeLock())}
-                />
-            )
+            !move ? (
+              <Sprite
+                  image={!objectList[currentObjectId].locked ? "../icons/lock.png" : "../icons/locked.png"}
+                  x={position.x + scale.x / 1.73}
+                  y={position.y - scale.y / 2}
+                  buttonMode
+                  interactive
+                  pointerdown={() => {dispatch(changeLock()); setMove(false)}}
+              />
+            ) : null
           }
         </>
       ) : null}
@@ -198,4 +181,4 @@ const OnePixyObject = ({ props }) => {
   );
 };
 
-export default OnePixyObject;
+export default OnePixiObject;

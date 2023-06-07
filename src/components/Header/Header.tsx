@@ -56,7 +56,7 @@ const Header = () => {
       type: "text/plain"
     });
     element.href = URL.createObjectURL(file);
-    element.download = "quest.js";
+    element.download = "room.js";
     document.body.appendChild(element);
     element.click();
   };

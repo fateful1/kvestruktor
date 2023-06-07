@@ -7,6 +7,7 @@ import { showBg } from "@/features/bgSlice";
 import { showHandInfo } from "@/features/handsSlice";
 import styles from "./PropertiesMenu.module.scss";
 import classNames from "classnames";
+import {Tabs} from "@/ui/Tabs";
 
 const PropertiesMenu = () => {
   const objectList = useSelector(showObjs);
@@ -23,49 +24,18 @@ const PropertiesMenu = () => {
             {objectList[currentObjectId].name}
           </div>
           <div className={styles.rightsidepanel__content}>
-            {characteristicsIsOpen ? (
-              <>
-                <div className={styles.rightsidepanel__switch}>
-                  <div
-                    className={classNames(
-                      styles.rightsidepanel__tab,
-                      styles.rightsidepanel__tab_active
-                    )}
-                    onClick={() => setCharacteristicsIsOpen(true)}
-                  >
-                    Свойства
-                  </div>
-                  <div
-                    className={styles.rightsidepanel__tab}
-                    onClick={() => setCharacteristicsIsOpen(false)}
-                  >
-                    Поведение
-                  </div>
-                </div>
+            <Tabs
+                options={['СВОЙСТВА','ПОВЕДЕНИЕ']}
+                onClick={()=>{setCharacteristicsIsOpen(!characteristicsIsOpen)}}
+                tabClassName={styles.rightsidepanel__tab}
+                animationTabClassName={styles.rightsidepanel__tab_active}
+                optionsClassName={styles.rightsidepanel__tab_options}
+            />
+            {characteristicsIsOpen ?
                 <Features />
-              </>
-            ) : (
-              <>
-                <div className={styles.rightsidepanel__switch}>
-                  <div
-                    className={styles.rightsidepanel__tab}
-                    onClick={() => setCharacteristicsIsOpen(true)}
-                  >
-                    Свойства
-                  </div>
-                  <div
-                    className={classNames(
-                      styles.rightsidepanel__tab,
-                      styles.rightsidepanel__tab_active
-                    )}
-                    onClick={() => setCharacteristicsIsOpen(false)}
-                  >
-                    Поведение
-                  </div>
-                </div>
+            :
                 <Actions />
-              </>
-            )}
+            }
           </div>
         </div>
       )}

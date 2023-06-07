@@ -10,7 +10,7 @@ const Background = () => {
   const [move, setMove] = useState([bg.left, bg.top]);
   const dispatch = useDispatch();
   const [isMoving, setIsMoving] = useState(false);
-  const onDragStart = (event) => {
+  const onDragStart = (event: PIXI.InteractionEvent) => {
     const sprite = event.currentTarget;
     sprite.alpha = 0.5;
     sprite.data = event.data;
@@ -19,7 +19,7 @@ const Background = () => {
   };
   // console.log(bg)
 
-  const onDragEnd = (event) => {
+  const onDragEnd = (event: PIXI.InteractionEvent) => {
     const sprite = event.currentTarget;
     sprite.alpha = 1;
     sprite.dragging = false;
@@ -30,7 +30,7 @@ const Background = () => {
     dispatch(changeBgY(move[1]));
   };
 
-  const onDragMove = (event) => {
+  const onDragMove = (event: PIXI.InteractionEvent) => {
     const sprite = event.currentTarget;
     if (sprite.dragging) {
       const newPosition = sprite.data.getLocalPosition(sprite.parent);
@@ -40,9 +40,6 @@ const Background = () => {
     }
   };
 
-  console.log(bg);
-
-  // @ts-ignore
   return (
     <>
       {hand === 1 ? (

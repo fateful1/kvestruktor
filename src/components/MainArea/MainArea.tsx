@@ -5,7 +5,7 @@ import { showBg } from "@/features/bgSlice";
 import { Background } from "@/components/MainArea/index";
 import { rootReducer } from "@/app/store";
 import { showObjs } from "@/features/objSlice";
-import OnePixyObject from "@/components/Objects/OnePixyObject";
+import {OnePixiObject} from "@/components/Objects";
 
 const MainArea = () => {
   const bg = useSelector(showBg);
@@ -31,7 +31,7 @@ const MainArea = () => {
         </Provider>
         <Provider store={rootReducer}>
           {objList.map((element: any) => (
-            <OnePixyObject props={element} key={element.id} />
+            <OnePixiObject props={element} key={element.id} />
           ))}
         </Provider>
       </Container>

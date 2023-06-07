@@ -1,14 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import styles from "./Layers.module.scss";
-import { changeName, deleteObject, makeCopy } from "@/features/objSlice";
+import {changeLock, changeName, deleteObject, makeCopy} from "@/features/objSlice";
 import { DragDotsIcon, MenuDotsIcon } from "@/ui/icons";
 
 interface ILayerObject {
   name: any;
+  locked: boolean;
 }
+
 const LayerObject = (props: ILayerObject) => {
-  const { name } = props;
+  const { name, locked } = props;
   const [menuIsOpen, setMenuIsOpen] = React.useState(false);
   const [rename, setRename] = React.useState(false);
   const dispatch = useDispatch();
@@ -52,9 +54,13 @@ const LayerObject = (props: ILayerObject) => {
           <div>{name}</div>
           <div
               className={styles.layers_image_lock}
-              onClick={() => setMenuIsOpen(!menuIsOpen)}
+              onClick={() => dispatch(changeLock()) }
           >
-            <img src='/icons/lock2.png' alt=''  /> {/*TODO: ПЕРЕДЕЛАЙ ИКОНКУ*/}
+            {locked ?
+                <img src='/icons/locked2.png' alt=''  />
+                :
+                <img src='/icons/lock2.png' alt=''  />
+            }
           </div>
           <div
             className={styles.layers_image_menu}

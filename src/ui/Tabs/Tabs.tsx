@@ -6,6 +6,10 @@ interface ITabs {
   options: string[];
   containerClassName?: string;
   labelClassName?: string;
+  optionsClassName?: string;
+  tabClassName?: string;
+  activeTabClassName?: string;
+  animationTabClassName?: string;
   label?: string;
   defaultValue?: number;
   labelHint?: string | JSX.Element;
@@ -19,6 +23,10 @@ const Tabs = (props: ITabs) => {
     defaultValue = 0,
     containerClassName,
     labelClassName,
+    optionsClassName,
+    tabClassName,
+    activeTabClassName,
+    animationTabClassName,
     label,
     labelHint,
     onClick,
@@ -50,14 +58,16 @@ const Tabs = (props: ITabs) => {
           {labelHint && labelHint}
         </div>
       )}
-      <div className={styles.options}>
+      <div className={classNames(styles.options, optionsClassName)}>
         {options.map((x, index) => {
           return (
             <div
               key={index}
               className={classNames(
                 styles.tab,
-                activeTab === index ? styles.active : ""
+                tabClassName,
+                activeTab === index ? styles.active : "",
+                activeTab === index ? activeTabClassName : ""
               )}
               onClick={() => changeTabHandler(index)}
               style={{
@@ -70,7 +80,7 @@ const Tabs = (props: ITabs) => {
           );
         })}
         <div
-          className={styles.activeTab}
+          className={classNames(styles.activeTab, animationTabClassName)}
           style={{
             width: `calc(${100 / options.length}% - 8px)`,
             transform:

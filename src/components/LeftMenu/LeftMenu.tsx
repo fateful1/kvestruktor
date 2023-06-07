@@ -63,10 +63,10 @@ const LeftMenu = (props: any) => {
           <div className={styles.menu__backgrounds}>
             <div
               className={styles.menu__bg}
-              onClick={() => changeBg("/backgrounds/bg1.svg")}
+              onClick={() => changeBg("/backgrounds/bg1.png")}
             >
               <Image
-                src="/backgrounds/bg1.svg"
+                src="/backgrounds/bg1.png"
                 width={336}
                 height={190}
                 alt={""}
@@ -85,10 +85,10 @@ const LeftMenu = (props: any) => {
             </div>
             <div
               className={styles.menu__bg}
-              onClick={() => changeBg("/backgrounds/bg1.svg")}
+              onClick={() => changeBg("/backgrounds/bg3.svg")}
             >
               <Image
-                src="/backgrounds/bg1.svg"
+                src="/backgrounds/bg3.svg"
                 width={336}
                 height={190}
                 alt={""}
@@ -96,10 +96,10 @@ const LeftMenu = (props: any) => {
             </div>
             <div
               className={styles.menu__bg}
-              onClick={() => changeBg("/backgrounds/bg1.svg")}
+              onClick={() => changeBg("/backgrounds/bg4.svg")}
             >
               <Image
-                src="/backgrounds/bg2.svg"
+                src="/backgrounds/bg4.svg"
                 width={336}
                 height={190}
                 alt={""}
@@ -113,13 +113,15 @@ const LeftMenu = (props: any) => {
             id === 1 ? styles.menu__tab_active : ""
           )}
         >
-          {props.objects.map((element: any) => (
-            <Objects
-              title={element.title}
-              content={element.content}
-              key={element.id}
-            />
-          ))}
+          <div className={styles.menu__objects}>
+            {props.objects.map((element: any) => (
+                <Objects
+                    title={element.title}
+                    content={element.content}
+                    key={element.id}
+                />
+            ))}
+          </div>
         </div>
         <div
           className={classNames(

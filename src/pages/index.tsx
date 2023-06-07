@@ -5,7 +5,7 @@ import { MainArea } from "@/components/MainArea";
 import { useSelector } from "react-redux";
 import { showBg } from "@/features/bgSlice";
 import { PropertiesMenu } from "@/components/PropertiesMenu";
-import {getObjects} from "@/pages/api/hello";
+import {getObjects} from "@/pages/api/getData";
 
 export default function Home(props: any) {
   const bg = useSelector(showBg);

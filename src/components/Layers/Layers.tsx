@@ -155,7 +155,7 @@ const Layers = () => {
                         )}
                         onClick={() => Click(item.id)}
                       >
-                        <LayerObject key={item.id} name={item.name} />
+                        <LayerObject key={item.id} name={item.name} locked={item.locked} />
                         {/*{item.id}*/}
                         {/*{index}*/}
                       </div>
